@@ -77,40 +77,69 @@
         </dependency>
     </dependencies>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+<!--         <plugins> -->
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-compiler-plugin</artifactId> -->
+<!--                 <configuration> -->
+<!--                     <source>1.6</source> -->
+<!--                     <target>1.6</target> -->
+<!--                 </configuration> -->
+<!--             </plugin> -->
+<!--             <plugin> -->
+<!--                 <artifactId>maven-source-plugin</artifactId> -->
+<!--                 <version>2.1</version> -->
+<!--                 <configuration> -->
+<!--                     <attach>true</attach> -->
+<!--                 </configuration> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <phase>deploy</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>jar</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
+<!--         </plugins> -->
+
+	<plugins>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-dependency-plugin</artifactId>
+		</plugin>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-dependency-plugin</artifactId>
+		  <version>3.0.1</version>
+		  <executions>
+		      <execution>
+		        <id>copy-dependencies</id>
+		        <phase>package</phase>
+		        <goals>
+		          <goal>copy-dependencies</goal>
+		        </goals>
+		        <configuration>
+		          <outputDirectory>target/lib</outputDirectory>
+		          <excludeArtifactIds>
+		            spring-boot-devtools,junit
+		          </excludeArtifactIds>
+		          <overWriteSnapshots>true</overWriteSnapshots>
+		        </configuration>
+		      </execution>
+		  </executions>
+		</plugin>
+	    </plugins>
     </build>
-    <contributors>
-        <contributor>
-            <properties>
-                <provider>kongxuan.zlj@taobao.com</provider>
-                <codeName>schedule</codeName>
-                <codeUrl>"http://svn.develop.taobao.net/repos/schedule/trunk/schedule@92</codeUrl>
-                <description>contributors added by SCM Plugin, please don't modify it!</description>
-            </properties>
-        </contributor>
-    </contributors>
+	<contributors>
+		<contributor>
+			<properties>
+				<provider>kongxuan.zlj@taobao.com</provider>
+				<codeName>schedule</codeName>
+				<codeUrl>"http://svn.develop.taobao.net/repos/schedule/trunk/schedule@92</codeUrl>
+				<description>contributors added by SCM Plugin, please don't modify it!</description>
+			</properties>
+		</contributor>
+	</contributors>
+    
 </project>
